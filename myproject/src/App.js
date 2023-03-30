@@ -2,51 +2,57 @@ import logo from './logo.svg';
 import './App.css';
 import MyJsx001 from './components/ex01_jsx/MyJsx001';
 import MyJsx002 from './components/ex01_jsx/MyJsx002';
-///////컴포넌트명                            파일명
 import MyJsx003 from './components/ex01_jsx/MyJsx003';
 import MyJsx004 from './components/ex01_jsx/MyJsx004';
 import MyJsx005 from './components/ex01_jsx/MyJsx005';
 import MyBasic001 from './components/ex02_useState/MyBasic001';
-import MyuseState002 from './components/ex02_useState/MyuseState002';
-import MyuseState003 from './components/ex02_useState/MyuseState003';
-import MyuseState004 from './components/ex02_useState/MyuseState004';
-import MyuseState005 from './components/ex02_useState/MyuseState005';
-import MyuseState006 from './components/ex02_useState/MyuseState006';
-import MyuseState007 from './components/ex02_useState/MyuseState007';
+import MyUseState002 from './components/ex02_useState/MyUseState002';
+import MyUseState003 from './components/ex02_useState/MyUseState003';
+import MyUseState004 from './components/ex02_useState/MyUseState004';
+import MyUseState005 from './components/ex02_useState/MyUseState005';
+import MyUseState006 from './components/ex02_useState/MyUseState006';
+import MyUseState007 from './components/ex02_useState/MyUseState007';
 import MyuseRef001 from './components/ex03_useRef/MyuseRef001';
-import MyuseRef002 from './components/ex03_useRef/MyuseRef002';
+import MyuseRef002 from './components/ex03_useRef/MyuserRef002';
 import MyuseEffect001 from './components/ex04_useEffect/MyuseEffect001';
+import MyuseEffect002 from './components/ex04_useEffect/MyuseEffect002';
+import MyuseStatesync001 from './components/ex05_async/MyuseStatesync001';
+import MyuseStatesync002 from './components/ex05_async/MyuseStatesync002';
+import Myprops001 from './components/ex06_props/Myprops001';
+import Myprops002 from './components/ex06_props/Myprops002';
+import Myprops003 from './components/ex06_props/Myprops003';
+import Myprops004 from './components/ex06_props/Myprops004';
+import MyuseContext01 from './components/ex07_context/MyuseContext01';
 
 function App() {
   return (
     <div className='App'>
-      {/* <MyJsx001 /> */}
-      {/* <MyJsx002 /> */}
-      {/* <MyJsx003 /> */}
-      {/* <MyJsx004 /> */}
-      {/* <MyJsx005 /> */}
-      {/* <MyBasic001 /> */}
-      {/* <MyuseState002 /> */}
-      {/* <MyuseState003 /> */}
-      {/* <MyuseState004 /> */}
-      {/* <MyuseState005 /> */}
-      {/* <MyuseState006 /> */}
-      {/* <MyuseState007 /> */}
-      {/* <MyuseRef001 /> */}
-      {/* <MyuseRef002 /> */}
-      <MyuseEffect001 />
+      {/* <MyJsx001></MyJsx001> */}
+      {/* <MyJsx002></MyJsx002> */}
+      {/* <MyJsx003></MyJsx003> */}
+      {/* <MyJsx004></MyJsx004> */}
+      {/* <MyJsx005></MyJsx005> */}
+      {/* <MyBasic001></MyBasic001> */}
+      {/* <MyUseState002></MyUseState002> */}
+      <MyUseState003></MyUseState003>
+      {/* <MyUseState004></MyUseState004> */}
+      {/* <MyUseState005></MyUseState005> */}
+      {/* <MyUseState006></MyUseState006> */}
+      {/* <MyUseState007></MyUseState007> */}
+      {/* <MyuseRef001></MyuseRef001> */}
+      {/* <MyuseRef002></MyuseRef002> */}
+      {/* <MyuseEffect001></MyuseEffect001> */}
+      {/* <MyuseEffect002></MyuseEffect002> */}
+      {/* <MyuseStatesync001 /> */}
+      {/* <MyuseStatesync002 /> */}
+      {/* <Myprops001 name='홍길동' /> */}
+      {/* <Myprops002 name='홍길동' age='30' loc='서울' /> */}
+      {/* <Myprops003 name='홍길동' age='30' loc='서울' /> */}
+      {/* <Myprops004 name='홍길동' /> */}
+      {/* <Myprops004 loc='경기' /> */}
+      {/* <MyuseContext01 /> */}
     </div>
   );
 }
 
 export default App;
-
-//App.js 는 html처럼 보이지만 jsx이다.
-//function App()에서 App()은 클래스처럼 쓴다.
-//반드시 카멜표기법 이용해야한다. (className)
-//App.js에서 한 작업을 html에서 해도 적용되지 않음
-//바벨 -> 버전 관리 자동 적용
-//단순히 하나의 작업으로 관리할 경우 <> </> 로 적용 가능 == <Fragment></Fragment>
-//jsx에서는 if,for문 사용 불가
-//return 이후에는 jsx를 사용하기 때문에 if, for문 사용불가 (jsx문법 사용해야됨)
-//return 이전에는 jsp 사용가능
