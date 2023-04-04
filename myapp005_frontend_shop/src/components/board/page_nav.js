@@ -2,40 +2,50 @@ import { useSelector } from 'react-redux';
 
 const PageNavigation = ({ getBoardList }) => {
   const pv = useSelector((state) =>
-    state.board.pv ? state.board.pv : { currentpage: 1 }
+    state.board.pv ? state.board.pv : { currentPage: 1 }
   );
 
-  const pageNumbers = []; //페이지에 대한 정보가 저장되는 곳
+  const pageNumbers = [];
   for (let i = pv.startPage; i <= pv.endPage; i++) {
     pageNumbers.push(i);
   }
 
+  console.log(pageNumbers);
   return (
     <nav arial-label='...'>
       <ul className='pagination'>
         <li className={pv.startPage <= 1 ? 'page-item disabled' : 'page-item'}>
-          <a href='#!' className='page-link'>
+          <a
+            href='#!'
+            className='page-link'
+            onClick={() => getBoardList(pv.startPage - pv.blockPage)}
+          >
             &laquo;
           </a>
         </li>
 
         {pageNumbers.map((pnum, idx) => (
           <li
-            className={pv.currentpage === pnum ? 'page-item active' : null}
-            aria-current={pv.currentpage === pnum ? 'page' : null}
-            key={pnum} //반복되기 때문에 key값 주기
+            className={pv.currentPage === pnum ? 'page-item active' : null}
+            aria-current={pv.currentPage === pnum ? 'page' : null}
+            key={pnum}
           >
-            <a href='#!'>
+            <a href='#!' onClick={() => getBoardList(pnum)}>
               <span className='page-link'>{pnum}</span>
             </a>
           </li>
         ))}
+
         <li
           className={
-            pv.endPage >= pv.totalpage ? 'page-item disabled' : 'page-item'
+            pv.endPage >= pv.totalPage ? 'page-item disabled' : 'page-item'
           }
         >
-          <a href='#!' className='page-link'>
+          <a
+            href='#!'
+            className='page-link'
+            onClick={() => getBoardList(pv.startPage + pv.blockPage)}
+          >
             &raquo;
           </a>
         </li>

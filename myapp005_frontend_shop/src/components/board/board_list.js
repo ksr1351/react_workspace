@@ -7,9 +7,10 @@ import PageNavigation from './page_nav';
 
 const BoardList = () => {
   const dispatch = useDispatch();
-  const navigator = useNavigate(); //컴포넌트 내에서 프로그래밍 방식으로 페이지 이동 가능
+  const navigator = useNavigate();
 
   const { currentPage } = useParams();
+
   const boardList = useSelector((state) => state.board.boardList);
   const pv = useSelector((state) =>
     state.board.pv ? state.board.pv : { currentPage: 1 }
@@ -39,10 +40,11 @@ const BoardList = () => {
           <tr>
             <th>번호</th>
             <th>제목</th>
-            <th>작성자</th>
+            <th>작성일</th>
             <th>조회수</th>
           </tr>
         </thead>
+
         <tbody>
           {boardList &&
             boardList.map((board) => {
@@ -54,4 +56,5 @@ const BoardList = () => {
     </div>
   );
 };
+
 export default BoardList;
