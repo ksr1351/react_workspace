@@ -15,13 +15,13 @@ const PageNavigation = ({ getBoardList }) => {
     <nav arial-label='...'>
       <ul className='pagination'>
         <li className={pv.startPage <= 1 ? 'page-item disabled' : 'page-item'}>
-          <a
-            href='#!'
+          <span
             className='page-link'
             onClick={() => getBoardList(pv.startPage - pv.blockPage)}
+            style={{ cursor: 'pointer' }}
           >
             &laquo;
-          </a>
+          </span>
         </li>
 
         {pageNumbers.map((pnum, idx) => (
@@ -30,9 +30,14 @@ const PageNavigation = ({ getBoardList }) => {
             aria-current={pv.currentPage === pnum ? 'page' : null}
             key={pnum}
           >
-            <a href='#!' onClick={() => getBoardList(pnum)}>
-              <span className='page-link'>{pnum}</span>
-            </a>
+            {/* #! 나오는게 싫으면 span 태그로 처리하면 됨 */}
+            <span
+              className='page-link'
+              onClick={() => getBoardList(pnum)}
+              style={{ cursor: 'pointer' }}
+            >
+              {pnum}
+            </span>
           </li>
         ))}
 
@@ -41,13 +46,13 @@ const PageNavigation = ({ getBoardList }) => {
             pv.endPage >= pv.totalPage ? 'page-item disabled' : 'page-item'
           }
         >
-          <a
-            href='#!'
+          <span
             className='page-link'
             onClick={() => getBoardList(pv.startPage + pv.blockPage)}
+            style={{ cursor: 'pointer' }}
           >
             &raquo;
-          </a>
+          </span>
         </li>
       </ul>
     </nav>

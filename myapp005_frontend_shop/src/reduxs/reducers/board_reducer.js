@@ -16,6 +16,14 @@ const boardSlice = createSlice({
       state.boardList = action.payload.data.aList;
       state.pv = action.payload.data.pv;
     },
+
+    getBoardDetail(state, action) {
+      state.boardDetail = action.payload.data;
+    },
+
+    getBoardDownload(state, action) {
+      state.boardFile = action.payload.data;
+    },
   },
 });
 
