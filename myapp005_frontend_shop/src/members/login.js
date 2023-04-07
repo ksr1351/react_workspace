@@ -10,6 +10,7 @@ const LoginPage = () => {
   });
 
   const { memberEmail, memberPass } = inputs;
+  //const navigator = useNavigate();
 
   const handleValueChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -21,9 +22,31 @@ const LoginPage = () => {
     e.preventDefault();
     //get방식으로 보내면 비밀번호 등 노출됨 , 그래서 post 방식으로 보냄
     await axios
-      .post(`${baseUrl}/members/login`, inputs, config)
+      .post(`${baseUrl}/login`, inputs, config)
       .then((response) => {
-        console.log('responsse:', response.data);
+        console.log('response:', response.data);
+        //let jwtToken = response.headers['Authorization'];
+        let jwtToken = response.headers.get('Authorization');
+        console.log(jwtToken);
+
+        let jwtMemberName = response.data.memberName;
+        let jwtMemberEmail = response.data.memberEmail;
+        let jwtAuthRole = response.data.authRole;
+
+        localStorage.setItem('Authorization', jwtToken);
+        localStorage.setItem('memberEmail', jwtMemberEmail);
+        localStorage.setItem('memberName', jwtMemberName);
+        localStorage.setItem('authRole', jwtAuthRole);
+        localStorage.setItem('isLogin', true); //로그인 상태에서만 사용하기 위함
+
+        setInputs({ memberEmail: '', memberPass: '' });
+      })
+      .then((response) => {
+        //navigatior('/');
+        window.location.replace('/');
+      })
+      .catch((err) => {
+        console.log(err.message);
       });
   };
 

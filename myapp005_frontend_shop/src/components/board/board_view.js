@@ -12,8 +12,14 @@ const BoardView = () => {
   //const boardFile = useSelector((state) => state.board.boardFile);
   const pv = useSelector((state) => state.board.pv);
 
+  const config = {
+    headers: {
+      Authorization: localStorage.getItem('Authorization'),
+    },
+  };
+
   useEffect(() => {
-    dispatch(boardActions.getBoardDetail(num));
+    dispatch(boardActions.getBoardDetail(num, config));
   }, [dispatch, num]);
 
   //download
@@ -45,7 +51,13 @@ const BoardView = () => {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    dispatch(boardActions.getBoardDelete(num));
+    dispatch(
+      boardActions.getBoardDelete(num, {
+        headers: {
+          Authorization: localStorage.getItem('Authorization'),
+        },
+      })
+    );
     navigator(`/board/list/${pv.currentPage}`);
   };
 
@@ -55,7 +67,11 @@ const BoardView = () => {
         <tbody>
           <tr>
             <th width='20%'>글쓴이</th>
-            <td>{boardDetail.reg_date}</td>
+            <td>
+              {boardDetail['membersDTO']
+                ? boardDetail['membersDTO']['memberName']
+                : null}
+            </td>
 
             <th width='20%'>조회수</th>
             <td>{boardDetail.readcount}</td>
@@ -101,13 +117,18 @@ const BoardView = () => {
         답변
       </Link>
 
-      <Link className='btn btn-primary' to={`/board/update/${num}`}>
-        수정
-      </Link>
+      {localStorage.getItem('memberEmail') ===
+      (boardDetail['memberEmail'] ? boardDetail['memberEmail'] : null) ? (
+        <>
+          <Link className='btn btn-primary' to={`/board/update/${num}`}>
+            수정
+          </Link>
 
-      <button className='btn btn-primary' onClick={handleDelete}>
-        삭제
-      </button>
+          <button className='btn btn-primary' onClick={handleDelete}>
+            삭제
+          </button>
+        </>
+      ) : null}
     </div>
   );
 };
