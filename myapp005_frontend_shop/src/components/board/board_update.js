@@ -53,7 +53,7 @@ const BoardUpdate = () => {
 
     const config = {
       headers: {
-        'Content-Type': 'multipart/form-data',
+        'Content-Type': 'multipart/form-data', //첨부파일이 있을 때 사용
         Authorization: localStorage.getItem('Authorization'),
       },
     };
